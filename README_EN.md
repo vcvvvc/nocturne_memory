@@ -76,17 +76,15 @@ The entire system consists of three independent components:
 The backend manages a full **Node–Memory–Edge–Path** graph topology. The frontend collapses all operations into intuitive `domain://path` tree operations — **complexity is absorbed in the right place**.
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│    Node      │     │   Memory     │     │    Edge       │     │    Path       │
-│ (Concept     │◄────│ (Content     │     │ (Directed     │────►│ (URI Route)  │
-│  Anchor)     │     │  Version)    │     │  Relation)    │     │ domain://path │
-│  UUID fixed  │     │ deprecated   │     │ priority      │     │              │
-│              │     │ migrated_to  │     │ disclosure    │     │              │
-└─────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
-  Identity Layer      Content Layer       Relation Layer        Routing Layer
-  Updates never       Version chain +     Same Node reachable   AI/humans only
-  change identity     deprecation +       from multiple parents need to operate
-                      rollback support    (foundation of Alias) on URI paths
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│       Node       │     │      Memory      │     │       Edge       │     │       Path       │
+│  Concept Anchor  │◄────│ Content Version  │     │Directed Relation │────►│    URI Route     │
+│    UUID fixed    │     │    deprecated    │     │     priority     │     │  domain://path   │
+│                  │     │   migrated_to    │     │    disclosure    │     │                  │
+└──────────────────┘     └──────────────────┘     └──────────────────┘     └──────────────────┘
+   Identity Layer           Content Layer            Relation Layer           Routing Layer    
+   Updates do not          Version chain +              One node              Humans/AI use    
+  change identity          rollback support          via many paths           URI paths only   
 ```
 
 | Layer | Entity | Responsibility | Why Separate? |
